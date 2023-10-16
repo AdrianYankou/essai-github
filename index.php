@@ -7,6 +7,6 @@
   <title>premiere page</title>
 </head>
 <body>
-  
+<img src="sw.png" alt="Entrée de l'Esigelec">
 </body>
 </html>
