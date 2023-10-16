@@ -9,7 +9,7 @@
 <body>
 
    <div style="position:absolute;z-index:1">
-      <img src="sw.png" width="200" heigth="100">
+      <img src="sw.png" width="1000" heigth="1000">
    </div>
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
       <center><b>s'inscrire</b></center>
