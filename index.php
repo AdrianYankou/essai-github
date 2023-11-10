@@ -15,11 +15,12 @@
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
    <p class="texte-bleu"></p>
    <center><b>Bienvenu dans l'univers du jeu et ....</b></center>
+   <a href="deuxiemepage.html">s'inscrire</a>
    </p>
     </div> 
 </body>
 </html>
-  
+
  
 
 

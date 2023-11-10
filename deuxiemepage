@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Deuxième Page</title>
+</head>
+<body>
+
+    <h1>Ma Deuxième Page</h1>
+    
+    <!-- Lien de retour vers la première page -->
+    <a href="index.html">Retour à la Page d'Accueil</a>
+
+</body>
+</html>
+Ici, le lien dans "page2.html" pointe vers "index.html" (ou le nom de votre première page) pour revenir à la page d'accueil. Vous pouvez personnaliser les noms de fichiers et les emplacements en fonction de votre structure de répertoires.
+
+
+
+
+
