@@ -13,8 +13,9 @@
       object-fit: cover; >
    </div>
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
-   <p class="texte-bleu">Ce texte est en couleur bleue.</p>
+   <p class="texte-bleu"></p>
    <center><b>Bienvenu dans l'univers du jeu</b></center>
+   </p>
     </div> 
 </body>
 </html>
