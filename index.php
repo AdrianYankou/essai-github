@@ -14,7 +14,8 @@
    </div>
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
    <p class="texte-bleu"></p>
-   <center><a href="page2.html">s'inscrire</a></center>
+   <center><a href="page2.html">s'inscrire</a>
+      <a href="page3.html">s'authentifier</a></center>
    
    </p>
     </div> 
