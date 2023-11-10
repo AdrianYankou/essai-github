@@ -32,12 +32,12 @@
       object-fit:cover; >
    </div>
   
-   <p class="texte-bleu"></p>
+   
    <a href="connexion.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #000000; outline: none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #000000; align-item:">s'authentifier</button></a>
       <br>
    <a href="inscription.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #000000; outline: none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #000000; align-item:">s'inscrire</button></a>
    
-   </p>
+  
    
      
 </body>
