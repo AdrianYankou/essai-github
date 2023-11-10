@@ -20,26 +20,31 @@
 
         main {
             margin-top: 20px;
+            text-align: center;
         }
+
+        main a{
+            display: inline-block;
+            margin: 0 20px;
+        }
+
 
         
     </style>
 </head>
 <body>
-   <main>
+   <
       <div style="position:absolute;z-index:1">
          <img src="sw.png"  width="100%" heigth="100%" 
          object-fit:cover; >
       </div>
-      <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
+    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
       
-      <a href="connexion.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #000000; outline: none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #000000; align-item:">s'authentifier</button></a>
-      <br>  
+      <a href="connexion.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #000000; outline: none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #000000; align-item:">s'authentifier</button></a>  
       <a href="inscription.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #000000; outline: none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #000000; align-item:">s'inscrire</button></a>
-      
-      
+         
       </div> 
-   </main>
+   
 </body>
 </html>
   
