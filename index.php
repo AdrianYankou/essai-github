@@ -19,7 +19,7 @@
    </div>
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
    <p class="texte-bleu"></p>
-   <center><a href="page2.html"><button class="c" type="button">s'inscrire</button></a>
+   <center><a href="page2.html"><button class="c" type="button" style="display: block; margin: 150px auto 0; font-size: 15px; font-weight: lighter; color: white; padding: 25px 80px; background: #B85C38; outline:none; cursor:pointer; border:none; border-radius: 20px; position: relative; box-shadow: 0 6px #842506">s'inscrire</button></a>
       <a href="page3.html">s'authentifier</a></center>
    
    </p>
