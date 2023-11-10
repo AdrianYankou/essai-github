@@ -23,11 +23,7 @@
             text-align: center;
         }
 
-        main a{
-            display: inline-block;
-            margin: 0 20px;
-        }
-
+        
 
         
     </style>
