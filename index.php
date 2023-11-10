@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   b {
+      color: white;
+   }
+  </style>
   <title>premiere page</title>
 </head>
 <body>
@@ -13,9 +18,8 @@
       object-fit: cover; >
    </div>
    <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
-   <p class="texte-bleu"></p>
    <center><b>Bienvenu dans l'univers du jeu</b></center>
-   </p>
+   
     </div> 
 </body>
 </html>
