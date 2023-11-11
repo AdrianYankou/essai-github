@@ -51,7 +51,6 @@
     
       <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
          <a href="connexion.html"><button>s'authentifier</button></a> 
-         <br> 
          <a href="inscription.html"><button>s'inscrire</button></a>
          
       </div> 
