@@ -5,57 +5,71 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>premiere page</title>
+  <title>Première page</title>
   <style>
       body {
          font-family: Arial, sans-serif;
-         margin: 20px;
+         margin: 0;
+         padding: 0;
+         background-image: url('sw.png');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+         height: 100vh;
+         overflow: hidden;
       }
+
       header {
          text-align: center;
          padding: 10px;
          background-color: #f2f2f2;
       }
+
       main {
-         margin-top: 20px;
-         text-align: center;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         height: 100%;
+         color: white;
       }
-      button{    
-         display: block;
-         margin: 150px auto 0;
-         font-size: 15px; 
+
+      .button-container {
+         width: 60vw;
+         max-width: 600px;
+         height: 40vh;
+         display: flex;
+         justify-content: space-between;
+         align-items: flex-start;
+         font-size: 4vw;
+      }
+
+      button {    
+         font-size: 2vw; 
          font-weight: lighter;
          color: white;
-         padding: 25px 80px;
+         padding: 2vh 5vw;
          background: #000000;
          outline: none;
-         cursor:pointer;
-         border:none;
-         border-radius: 20px; 
-         position: relative;
-         box-shadow: 0 6px #000000;
-         align-item; 
+         cursor: pointer;
+         border: none;
+         border-radius: 2vw; 
+         box-shadow: 0 1vh #000000;
       }
 
-        
-
-        
+      @media (max-width: 600px) {
+         .button-container {
+            font-size: 8vw;
+         }
+      }        
    </style>
 </head>
 <body>
    <main>
-      <div style="position:absolute;z-index:1">
-         <img src="sw.png"  width="100%" heigth="100%" 
-         object-fit:cover; >
-      </div>
-    
-      <div style="position:absolute;top:360px; width:600px; height:400px; z-index:2;font-size:200%">
-         <a href="connexion.html"><button>s'authentifier</button></a> 
-         <a href="inscription.html"><button>s'inscrire</button></a>
-         
+      <div class="button-container">
+         <a href="connexion.html"><button>S'authentifier</button></a> 
+         <a href="inscription.html"><button>S'inscrire</button></a>
       </div> 
-      </main>
+   </main>
 </body>
 </html>
-  
-
