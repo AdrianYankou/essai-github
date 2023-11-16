@@ -15,8 +15,13 @@
          background-repeat: no-repeat;
          height: 100vh;
          overflow: hidden;
-      }
-
+        }
+        h1{
+            color:white;
+        }
+        p{
+            color:white;
+        }
         header {
             text-align: center;
             padding: 10px;
@@ -32,12 +37,18 @@
             margin: 5px;
             font-size: 16px;
         }
-
+        #mobileIcon {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px; /* Ajuster la largeur selon les besoins */
+            height: auto; /* Maintenir le rapport hauteur/largeur */
+            cursor: pointer;}
     
     </style>
 </head>
 <body>
-
+   
     <h1>Authentification</h1>
     
     <main>
@@ -46,6 +57,11 @@
        
         <a href="admit.html"><button>Admit</button></a>
         <a href="membre.html"><button>Membre</button></a>
+        
+        <a href="votre_autre_page.html">
+            <img id="mobileIcon" src="icon_mobile.png" alt="Icône mobile">
+        </a>
+
     </main>
 </body>
 </html>
