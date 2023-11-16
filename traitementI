@@ -2,9 +2,9 @@
 
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$mail = $_POST['email'];
-$motdepasse = $_POST['password'];
-$datedenaissance = $_POST['datede naissance'];
+$mail = $_POST['e-mail'];
+$motdepasse = $_POST['mot de passe'];
+$datedenaissance = $_POST['date de naissance'];
 
 $servername = "localhost";
 $username = "root"; // L'utilisateur par défaut de MySQL dans XAMPP
@@ -36,7 +36,7 @@ else
         $hashedPassword = password_hash($motdepasse, PASSWORD_DEFAULT);
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,mail,motdepasse,statut) values ('$nom','$prenom','$mail','$hashedPassword','$statut')";
+        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,e-mail,mot de passe,date de naissance,statut) values ('$nom','$prenom','$mail','$hashedPassword','$birth date','$statut')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             echo "Inscription réussie! Redirection vers la page d'accueil...";
