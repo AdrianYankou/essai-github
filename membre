@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion</title>
+        <style>
+            body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         background-image: url('background other 2.0.png');
+         background-size: cover;
+         background-position: center;
+         background-repeat: no-repeat;
+         height: 100vh;
+         overflow: hidden;
+      }
+
+            form {
+                display: inline-block;
+                text-align: left;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            input {
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            #result {
+                margin-top: 20px;
+                color: red;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <P>saisissez vos informations</P>
+        <form id="loginForm">
+            <label for="username">Identifiant:</label>
+            <input type="text" id="username" required>
+            <br>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" required>
+            <br>
+            <button type="button" onclick="checkLogin()">Se connecter</button>
+        </form>
+
+        <div id="result"></div>
+
+        <script>
+            function checkLogin() {
+                // Récupérer les valeurs entrées par l'utilisateur
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                // Vérifier les identifiants
+                if (username === "utilisateur" && password === "motdepasse") {
+                    document.getElementById("result").innerHTML = "Connexion réussie! Vous avez accès au site.";
+                } else {
+                    document.getElementById("result").innerHTML = "Identifiant ou mot de passe incorrect. Veuillez réessayer.";
+                    
+                }
+            }
+
+        </script>
+                                                                                                                                                    
+
+    </body>
+</html>
