@@ -38,6 +38,13 @@
             padding: 10px;
             font-size: 16px;
         }
+        #mobileIcon {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 50px; /* Ajuster la largeur selon les besoins */
+            height: auto; /* Maintenir le rapport hauteur/largeur */
+            cursor: pointer;}
         #result {
             margin-top: 20px;
             color: green;
@@ -68,6 +75,13 @@
         <br>
         <button type="button" onclick="registerUser()">S'inscrire</button>
     </form>
+
+    <main>
+        <a href="votre_autre_page.html">
+            <img id="mobileIcon" src="icon_mobile.png" alt="Icône mobile">
+        </a>
+    </main>
+
     <script>
         <div id="result"></div>
         function registerUser() {
