@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>page d'authentification</title>
-    <style>
-         body {
+<!DOCTYPE html><html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion</title>
+        <style>
+            body {
          font-family: Arial, sans-serif;
          margin: 0;
          padding: 0;
@@ -17,47 +16,64 @@
          overflow: hidden;
       }
 
-        header {
-            text-align: center;
-            padding: 10px;
-            background-color: #f2f2f2;
-        }
+            form {
+                display: inline-block;
+                text-align: left;
+            }
 
-        main {
-            margin-top: 20px;
-            text-align: center;
-        } 
-        button{
-            padding: 10px;
-            margin: 5px;
-            font-size: 16px;
-        }
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
 
+            input {
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+
+            button {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            #result {
+                margin-top: 20px;
+                color: red;
+            }
+        </style>
+    </head>
     
-    </style>
-</head>
-<body>
+    <body>
+        <P>saisissez vos informations</P>
+        <form id="loginForm">
+            <label for="username">Identifiant:</label>
+            <input type="text" id="username" required>
+            <br>
+            <label for="password">Mot de passe:</label>
+            <input type="password" id="password" required>
+            <br>
+            <button type="button" onclick="checkLogin()">Se connecter</button>
+        </form>
 
-    <h1>Authentification</h1>
-    
-    <main>
-        <p>Choisissez votre statut</p>
+        <div id="result"></div>
 
-       
-        <a href="admit.html"><button>Admit</button></a>
-        <a href="membre.html"><button>Membre</button></a>
-    </main>
-</body>
+        <script>
+            function checkLogin() {
+                // Récupérer les valeurs entrées par l'utilisateur
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                // Vérifier les identifiants
+                if (username === "utilisateur" && password === "motdepasse") {
+                    document.getElementById("result").innerHTML = "Connexion réussie! Vous avez accès au site.";
+                } else {
+                    document.getElementById("result").innerHTML = "Identifiant ou mot de passe incorrect. Veuillez réessayer.";
+                    
+                }
+            }
+
+        </script>
+                                                                                                                                                    
+
+    </body>
 </html>
-<body>
-    
-    
-    
-
-
-
-
-
-
-
-
