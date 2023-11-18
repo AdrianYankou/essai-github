@@ -18,8 +18,8 @@ function redirectTo($location, $message) {
     exit();
 }
 
-$email = $_POST['email']; 
-$password = $_POST['password']; 
+$email = $_POST['e-mail']; 
+$password = $_POST['mot de passe']; 
 
 $mysqli = connectDB(); // Connexion à la base de données
 
