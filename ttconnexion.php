@@ -38,18 +38,18 @@ if ($stmt = $mysqli->prepare("SELECT motdepasse, statut FROM utilisateur WHERE m
             if ($row["statut"] == "admin") {
                 header('Location:index.php');
             } elseif ($row["statut"] == "membre") {
-                header('page_membre.php');
+                header('Location:page_membre.php');
             } else {
                 redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
         } else {
-            redirectTo('connexion.html', 'Mot de passe incorrect.');
+            redirectTo('index.php', 'Mot de passe incorrect.');
         }
     } else {
-        redirectTo('connexion.html', 'Identifiant inexistant.');
+        redirectTo('index.php', 'Identifiant inexistant.');
     }
 } else {
     // En cas d'erreur de préparation de la requête
-    redirectTo('index.php', 'Erreur lors de l\'authentification.');
+    redirectTo('page_membre.php', 'Erreur lors de l\'authentification.');
 }
 ?>
