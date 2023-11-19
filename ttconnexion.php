@@ -38,7 +38,7 @@ if ($stmt = $mysqli->prepare("SELECT motdepasse, statut FROM utilisateur WHERE m
             if ($row["statut"] == "admin") {
                 header('Location:index.php');
             } elseif ($row["statut"] == "membre") {
-                header('Location:sessionmembre.html');
+                header('page_membre.php');
             } else {
                 redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
