@@ -56,23 +56,42 @@
          border-radius: 2vw; 
          box-shadow: 0 1vh #000000;
       }
+      .game-section {
+         margin-top: 20px;
+         text-align: center;
+      }
+
+      .game-image {
+         max-width: 50px; /* Réduire davantage la largeur de l'image */
+         max-height: 50px; /* Réduire la hauteur de l'image */
+         margin: 5px; /* Ajouter une marge autour de l'image */
+      }
 
       @media (max-width: 600px) {
          .button-container {
             font-size: 8vw;
          }
       }  
-      
-      
+   
+   
    </style>
 </head>
 <body>
    <main>
       <div class="button-container">
-         
-         <a href="connexion.html"><button>S'authentifier</button></a> 
+ 
+ 3     <a href="connexion.html"><button>S'authentifier</button></a> 
          <a href="inscription.html"><button>S'inscrire</button></a>
       </div> 
+      <div class="game-section">
+         <h2>Jeux Populaires</h2>
+         <ul>
+            <li><img class="game-image" src="monopoly_image.jpg" alt="monopoly"><strong>-Monopoly</strong> </li>
+            <li><img class="game-image" src="ludo_image.jpg" alt="Ludo"><strong>-Ludo</strong> </li>
+            
+         </ul>
+         <p>Et bien d'autres encore... viens jouer avec nous</p>
+      </div>
    </main>
 </body>
 </html>
