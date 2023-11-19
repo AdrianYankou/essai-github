@@ -63,13 +63,7 @@
          }
       }  
       
-      #mobileIcon {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 50px; /* Ajuster la largeur selon les besoins */
-            height: auto; /* Maintenir le rapport hauteur/largeur */
-            cursor: pointer;}
+      
    </style>
 </head>
 <body>
@@ -77,9 +71,6 @@
       <div class="button-container">
          <a href="connexion.html"><button>S'authentifier</button></a> 
          <a href="inscription.html"><button>S'inscrire</button></a>
-         <a href="votre_autre_page.html">
-            <img id="mobileIcon" src="icon_mobile.png" alt="Icône mobile">
-        </a>
       </div> 
    </main>
 </body>

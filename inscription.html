@@ -23,9 +23,14 @@
             color:white;
         }
         form {
-            display: inline-block;
-            text-align: left;
-        }
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100vh; /* utilise 100% de la hauteur de la vue */
+                    margin: 0; /* supprime les marges par défaut du corps de la page */
+                }
+        
         label {.
             display: block;
             margin-bottom: 10px;
@@ -68,6 +73,8 @@
         <br>
         <button class="btn btn-outline-primary" type="submit">S'inscrire</button>
     </form>
+
+
     <script>
         <div id="result"></div>
         function registerUser() {
