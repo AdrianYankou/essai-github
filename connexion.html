@@ -63,36 +63,17 @@
         <body>
             <h1>Authentification</h1>
             <P>saisissez vos informations</P>
-            <form id="loginForm">
+            <form method="POST" action="ttconnexion.php">
                 <label for="username">Identifiant:</label>
-                <input type="text" id="username" required>
+                <input type="text" id="username" name = "username" required>
                 <br>
                 <label for="password">Mot de passe:</label>
-                <input type="password" id="password" required>
+                <input type="password" id="password" name = "password" required>
                 <br>
-                <button type="button" onclick="checkLogin()">Se connecter</button>
+                <button class="btn btn-outline-primary" type="submit">Se connecter</button>
             </form>
-    
-            <div id="result"></div>
-    
-            <script>
-                function checkLogin() {
-                    // Récupérer les valeurs entrées par l'utilisateur
-                    var username = document.getElementById("username").value;
-                    var password = document.getElementById("password").value;
-    
-                    // Vérifier les identifiants
-                    if (username === "utilisateur" && password === "motdepasse") {
-                        document.getElementById("result").innerHTML = "Connexion réussie! Vous avez accès au site.";
-                    } else {
-                        document.getElementById("result").innerHTML = "Identifiant ou mot de passe incorrect. Veuillez réessayer.";
-                        
-                    }
-                }
-    
-            </script>
-                                                                                                                                                        
-    
+
+       
         </body>
     </html>
     

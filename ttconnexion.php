@@ -18,8 +18,8 @@ function redirectTo($location, $message) {
     exit();
 }
 
-$email = $_POST['e-mail']; 
-$password = $_POST['mot de passe']; 
+$email = $_POST['username']; 
+$password = $_POST['password']; 
 
 $mysqli = connectDB(); // Connexion à la base de données
 
@@ -36,17 +36,20 @@ if ($stmt = $mysqli->prepare("SELECT motdepasse, statut FROM utilisateur WHERE m
         if (password_verify($password, $row["motdepasse"])) {
             // Redirection en fonction du statut de l'utilisateur
             if ($row["statut"] == "admin") {
-                header("Location:menuadmin.php");
+                header('Location:index.php');
             } elseif ($row["statut"] == "membre") {
-                header("Location:menumembre.php");
+                header('Location:sessionmembre.html');
             } else {
-                redirectTo('connexion.php', 'Authentification réussie pour un rôle inconnu.');
+                redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
         } else {
-            redirectTo('connexion.php', 'Mot de passe incorrect.');
+            redirectTo('connexion.html', 'Mot de passe incorrect.');
         }
     } else {
-        redirectTo('connexion.php', 'Identifiant inexistant.');
+        redirectTo('connexion.html', 'Identifiant inexistant.');
     }
+} else {
+    // En cas d'erreur de préparation de la requête
+    redirectTo('index.php', 'Erreur lors de l\'authentification.');
 }
 ?>

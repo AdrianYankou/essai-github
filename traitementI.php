@@ -1,20 +1,23 @@
 <?php
 
+
+
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $mail = $_POST['mail'];
-$motdepasse = $_POST['motdepasse'];
-$datedenaissance = $_POST['datedenaissance'];
+$motdepasse = $_POST['password'];
+
+//pour la vérification du statut
+$statut = "membre";
 
 $servername = "localhost";
 $username = "root"; // L'utilisateur par défaut de MySQL dans XAMPP
-$passwords = ""; // Laissez le mot de passe vide par défaut
+$passwords = "root"; // Laissez le mot de passe vide par défaut
 
 // Nom de la base de données que vous avez créée dans phpMyAdmin
 $database = "projet";
 
-//pour la vérification du statut
-$statut = "membre";
+
 
 // Créer une connexion
 $conn = new mysqli($servername, $username, $passwords, $database);
@@ -36,9 +39,15 @@ else
         $hashedPassword = password_hash($motdepasse, PASSWORD_DEFAULT);
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,datedenaissance,motdepasse,statut) VALUES ('$nom','$prenom','$mail','$datedenaissance','$hashedPassword','$statut')";
-        header("Location:index.php");
+        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,motdepasse,statut) values ('$nom','$prenom','$mail','$hashedPassword','$statut')";
 
+        if ($conn->query($insertUserQuery) === TRUE) {
+            header('Location: connexion.html');
+            exit(); // Assure une sortie immédiate après la redirection
+        } else {
+            echo "Erreur lors de l'inscription : " . $conn->error . " Query: " . $insertUserQuery;
+        }
+        
     }
 }
 

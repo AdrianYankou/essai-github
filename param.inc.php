@@ -1,6 +1,6 @@
 <?php 
     $host = "localhost";
     $login = "root";
-    $passwd ="";
+    $passwd ="root";
     $dbname = "play";
 ?>
