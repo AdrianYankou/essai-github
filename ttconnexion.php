@@ -25,7 +25,7 @@ $password = $_POST['password'];
 $mysqli = connectDB(); // Connexion à la base de données
 
 // Préparation de la requête SQL avec une requête préparée pour éviter les injections SQL
-if ($stmt = $mysqli->prepare("SELECT motdepasse, statut FROM utilisateur WHERE email=? ")) {
+if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE email=? ")) {
     $stmt->bind_param("s", $email); // Liaison des paramètres
     $stmt->execute(); // Exécution de la requête
     $result = $stmt->get_result(); // Récupération des résultats
