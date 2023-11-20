@@ -1,61 +1,58 @@
-
-
 <?php
-session_start();
+session_start(); // Démarrage de la session pour stocker des messages entre les pages
 
-// Inclure la connexion à la base de données
-include('connexion_bdd.php');
+// Fonction de connexion à la base de données
+function connectDB() {
+    require_once("param.inc.php");
+    $mysqli = new mysqli($host, $login, $passwd, $dbname);
+    if ($mysqli->connect_error) {
+        die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+    }
+    return $mysqli;
+}
 
-// Vérifier si le formulaire de connexion a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
-    $mail = mysqli_real_escape_string($connexion, $_POST['mail']);
-    $motdepasse = mysqli_real_escape_string($connexion, $_POST['password']);
+// Fonction de redirection avec message
+function redirectTo($location, $message) {
+    $_SESSION['message'] = $message;
+    header("Location: $location");
+    exit();
+}
 
-    // Requête pour vérifier les informations d'authentification
-    $query = "SELECT * FROM utilisateur WHERE mail = '$mail'";
-    $result = mysqli_query($connexion, $query);
+$email = $_POST['username']; 
+$password = $_POST['password']; 
 
-    if ($result && mysqli_num_rows($result) > 0) {
-        $utilisateur = mysqli_fetch_assoc($result);
+$mysqli = connectDB(); // Connexion à la base de données
 
-        // Vérifier le mot de passe haché
-        if (password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
-            // Authentification réussie, créer une session
-            $_SESSION['id_utilisateur'] = $utilisateur['id_utilisateur'];
-            $_SESSION['statut'] = $utilisateur['statut'];
+// Préparation de la requête SQL avec une requête préparée pour éviter les injections SQL
+if ($stmt = $mysqli->prepare("SELECT motdepasse, statut FROM utilisateur WHERE mail=? ")) {
+    $stmt->bind_param("s", $email); // Liaison des paramètres
+    $stmt->execute(); // Exécution de la requête
+    $result = $stmt->get_result(); // Récupération des résultats
 
-            // Rediriger vers la page d'accueil ou une autre page appropriée
-            header("Location: index.php");
-            exit();
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc(); // Récupération de la première ligne de résultat
+
+        // Vérification du mot de passe avec password_verify
+        if (password_verify($password, $row["motdepasse"])) {
+            // Redirection en fonction du statut de l'utilisateur
+            if ($row["statut"] == "admin") {
+                header('Location:admin.php');
+            } elseif ($row["statut"] == "membre") {
+                header('Location:sessionmembre.php');
+            } else {
+                redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
+            }
         } else {
-            // Mot de passe incorrect
-            $erreur = "Mot de passe incorrect";
+            redirectTo('index.php', 'Mot de passe incorrect.');
         }
     } else {
-        // Utilisateur non trouvé
-        $erreur = "Adresse e-mail non valide";
+        redirectTo('index.php', 'Identifiant inexistant.');
     }
+} else {
+    // En cas d'erreur de préparation de la requête
+    redirectTo('connexion.html', 'Erreur lors de l\'authentification.');
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <!-- Ajoutez des liens vers vos fichiers CSS et autres ressources ici -->
-</head>
-<body>
-    <h1>Connexion</h1>
 
-    <!-- Afficher les erreurs, le cas échéant -->
-    <?php if (isset($erreur)) : ?>
-        <p style="color: red;"><?php echo $erreur; ?></p>
-    <?php endif; ?>
 
-   
-</body>
-</html>
