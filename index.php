@@ -80,7 +80,7 @@
    <main>
       <div class="button-container">
  
- 3     <a href="connexion.html"><button>S'authentifier</button></a> 
+      <a href="connexion.html"><button>S'authentifier</button></a> 
          <a href="inscription.html"><button>S'inscrire</button></a>
       </div> 
       <div class="game-section">

@@ -3,7 +3,7 @@ session_start(); // Démarrage de la session pour stocker des messages entre les
 
 // Fonction de connexion à la base de données
 function connectDB() {
-    require_once("param.inc.php");
+    require_once("connexion_bdd.php");
     $mysqli = new mysqli($host, $login, $passwd, $dbname);
     if ($mysqli->connect_error) {
         die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
