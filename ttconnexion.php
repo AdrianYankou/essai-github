@@ -19,7 +19,7 @@ function redirectTo($location, $message) {
     exit();
 }
 
-$email = $_POST['username']; 
+$email = $_POST['email']; 
 $password = $_POST['password']; 
 
 $mysqli = connectDB(); // Connexion à la base de données
@@ -51,8 +51,7 @@ if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE ema
     }
 } else {
     // En cas d'erreur de préparation de la requête
-    redirectTo('connexion.html', 'Erreur lors de l\'authentification.');
+    redirectTo('sessionmembre.php', 'Erreur lors de l\'authentification.');
 }
 ?>
-
 
