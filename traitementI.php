@@ -4,8 +4,8 @@
 
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$mail = $_POST['mail'];
-$motdepasse = $_POST['password'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
 //pour la vérification du statut
 $statut = "membre";
@@ -20,7 +20,7 @@ $database = "projet";
 
 
 // Créer une connexion
-$conn = new mysqli($servername, $username, $passwords, $database);
+$conn = new mysqli($servername, $username, $password, $database);
 
 // Vérifier la connexion
 if ($conn->connect_error) {
@@ -29,17 +29,17 @@ if ($conn->connect_error) {
 else 
 {
     // Vérifier si l'utilisateur existe déjà
-    $checkUserQuery = "SELECT * FROM utilisateur WHERE mail='$mail'";
+    $checkUserQuery = "SELECT * FROM utilisateur WHERE mail='$email'";
     $result = $conn->query($checkUserQuery);
 
     if ($result->num_rows > 0) {
-        echo "Erreur : L'utilisateur avec l'adresse e-mail '$mail' existe déjà.";
+        echo "Erreur : L'utilisateur avec l'adresse e-mail '$email' existe déjà.";
     } else {
         // Hacher le mot de passe
-        $hashedPassword = password_hash($motdepasse, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,motdepasse,statut) values ('$nom','$prenom','$mail','$hashedPassword','$statut')";
+        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,motdepasse,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             header('Location: connexion.html');
