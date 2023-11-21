@@ -7,7 +7,7 @@ if (!isset($_SESSION['id_utilisateur']) || $_SESSION['statut'] !== 'administrate
     exit();
 }
 
-include('connexion_bdd.php');
+include('param.inc.php');
 
 // Gestion des différentes actions (ajout, modification, suppression, etc.)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
