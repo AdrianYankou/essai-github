@@ -22,6 +22,9 @@ $database = "projet";
 // Créer une connexion
 $conn = new mysqli($servername, $username, $password, $database);
 
+
+
+
 // Vérifier la connexion
 if ($conn->connect_error) {
     die("La connexion à la base de données a échoué : " . $conn->connect_error);
@@ -29,7 +32,7 @@ if ($conn->connect_error) {
 else 
 {
     // Vérifier si l'utilisateur existe déjà
-    $checkUserQuery = "SELECT * FROM utilisateur WHERE mail='$email'";
+    $checkUserQuery = "SELECT * FROM utilisateur WHERE email='$email'";
     $result = $conn->query($checkUserQuery);
 
     if ($result->num_rows > 0) {
@@ -39,7 +42,7 @@ else
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,motdepasse,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
+        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,password,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             header('Location: connexion.html');

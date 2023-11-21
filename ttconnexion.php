@@ -54,4 +54,3 @@ if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE ema
     redirectTo('sessionmembre.php', 'Erreur lors de l\'authentification.');
 }
 ?>
-
