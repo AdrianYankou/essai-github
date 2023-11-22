@@ -44,7 +44,7 @@ if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE ema
                 redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
         } else {
-            redirectTo('index.php', 'Mot de passe incorrect.');
+            redirectTo('sessionmembre.php', 'Mot de passe incorrect.');
         }
     } else {
         redirectTo('index.php', 'Identifiant inexistant.');
