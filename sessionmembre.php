@@ -1,11 +1,11 @@
 <?php
 // Vérifier si l'utilisateur est connecté
 session_start();
-if (!isset($_SESSION['id_utilisateur'])) {
+/*if (!isset($_SESSION['id_utilisateur'])) {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: connexion.html");
+    header("Location: connexion.php");
     exit();
-}
+}*/
 
 // Inclure la connexion à la base de données et d'autres fichiers nécessaires
 include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votre configuration
