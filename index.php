@@ -80,9 +80,8 @@
    <main>
       <div class="button-container">
  
-      <a href="connexion.php"><button>S'authentifier</button></a> 
+         <a href="connexion.php"><button>S'authentifier</button></a> 
          <a href="inscription.html"><button>S'inscrire</button></a>
-         <a href="admin.php"><button>admin</button></a>
       </div> 
       <div class="game-section">
          <h2>Jeux Populaires</h2>

@@ -3,14 +3,14 @@
 session_start(); // Démarrage de la session pour stocker des messages entre les pages
 
 // Fonction de connexion à la base de données
-//function connectDB() {
-    require "param.inc.php";
+function connectDB() {
+    require_once("param.inc.php");
     $mysqli = new mysqli($host, $login, $passwd, $dbname);
     if ($mysqli->connect_error) {
         die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
     }
-   // return $mysqli;
-//}
+    return $mysqli;
+}
 
 // Fonction de redirection avec message
 function redirectTo($location, $message) {
@@ -22,7 +22,7 @@ function redirectTo($location, $message) {
 $email = $_POST['email']; 
 $password = $_POST['password']; 
 
-//$mysqli = connectDB(); // Connexion à la base de données
+$mysqli = connectDB(); // Connexion à la base de données
 
 // Préparation de la requête SQL avec une requête préparée pour éviter les injections SQL
 if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE email=? ")) {
@@ -44,7 +44,7 @@ if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE ema
                 redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
         } else {
-            redirectTo('sessionmembre.php', 'Mot de passe incorrect.');
+            redirectTo('index.php', 'Mot de passe incorrect.');
         }
     } else {
         redirectTo('index.php', 'Identifiant inexistant.');

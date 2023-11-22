@@ -132,115 +132,50 @@
 
 
 
+
 <?php
-
-session_start(); // Démarrage de la session pour stocker des messages entre les pages
-
-// Fonction de connexion à la base de données
-function connectDB() {
-    require_once("param.inc.php");
-    $mysqli = new mysqli($host, $login, $passwd, $dbname);
-    if ($mysqli->connect_error) {
-        die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-    }
-    return $mysqli;
-}
-
-// Fonction de redirection avec message
-function redirectTo($location, $message) {
-    $_SESSION['message'] = $message;
-    header("Location: $location");
+session_start();
+if (!isset($_SESSION['id_utilisateur'])) {
+    header("Location: connexion.php");
     exit();
 }
 
-$email = $_POST['email']; 
-$password = $_POST['password']; 
+include('connexion_bdd.php');
 
-$mysqli = connectDB(); // Connexion à la base de données
-
-// Préparation de la requête SQL avec une requête préparée pour éviter les injections SQL
-if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE email=? ")) {
-    $stmt->bind_param("s", $email); // Liaison des paramètres
-    $stmt->execute(); // Exécution de la requête
-    $result = $stmt->get_result(); // Récupération des résultats
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc(); // Récupération de la première ligne de résultat
-
-        // Vérification du mot de passe avec password_verify
-        if (password_verify($password, $row["password"])) {
-            // Redirection en fonction du statut de l'utilisateur
-            if ($row["statut"] == "admin") {
-                header('Location:admin.php');
-            } elseif ($row["statut"] == "membre") {
-                header('Location:sessionmembre.php');
-            } else {
-                redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
-            }
-        } else {
-            redirectTo('index.php', 'Mot de passe incorrect.');
-        }
-    } else {
-        redirectTo('index.php', 'Identifiant inexistant.');
-    }
-} else {
-    // En cas d'erreur de préparation de la requête
-    redirectTo('sessionmembre.php', 'Erreur lors de l\'authentification.');
-}
+$query = "SELECT * FROM jeu";
+$result = mysqli_query($connexion, $query);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des Jeux</title>
+</head>
+<body>
+    <h1>Liste des Jeux</h1>
 
-
-
-
-
-
-
-
-<?php
-
-session_start(); // Pour les messages
-
-$mail = htmlentities($_POST['email']);
-$password = htmlentities($_POST['password']);
-
-// Connexion :
-require_once("param.inc.php");
-$mysqli = new mysqli($host, $login, $passwd, $dbname);
-
-if ($mysqli->connect_error) {
-    die('Erreur de connexion (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
-}
-
-if ($stmt = $mysqli->prepare("SELECT * FROM utilisateur WHERE email=? limit 1")) {
-    $stmt->bind_param("s", $mail);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row["password"])) {
-            echo "connexion réussie";
-
-            // Redirection vers la page admin.php ou autres pages en fonction du rôle (tuteur, admin, etc.);
-            $_SESSION['PROFILE'] = $row;
-
-            if ($row["role"] == 'admin') {
-                $_SESSION['message'] = "Authentification réussie pour un admin.";
-                header('Location: admin.php');
-            } elseif ($row["role"] == 'membre') {
-                $_SESSION['message'] = "Authentification réussie pour un membre.";
-                header('Location: sessionmembre.php');
+    <?php
+    // Vérifier s'il y a des jeux dans la base de données
+    if (mysqli_num_rows($result) > 0) {
+    
+        while ($row = mysqli_fetch_assoc($result)) {
+                echo "<h2>" . $row['nom'] . "</h2>";
+            echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
+            echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
+            echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank'>Télécharger la règle du jeu (PDF)</a></p>";
+            if (!empty($row['photos'])) {
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "'>";
             }
-        } else {
-            // Redirection vers la page d'authentification connexion.php
-            $_SESSION['message'] = "Erreur de connexion";
-            header('Location: connexion.html');
+            echo "<hr>";
         }
     } else {
-        $_SESSION['message'] = "Erreur de connexion";
-        header('Location: connexion.html');
-    }
+    echo "<p>Aucun jeu disponible pour le moment.</p>";
 }
+    ?>
 
-?>
+</body>
+</html>
+
