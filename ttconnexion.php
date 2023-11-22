@@ -41,9 +41,11 @@ if ($stmt = $mysqli->prepare("SELECT password, statut FROM utilisateur WHERE ema
             } elseif ($row["statut"] == "membre") {
                 header('Location:sessionmembre.php');
             } else {
+                
                 redirectTo('index.php', 'Authentification réussie pour un rôle inconnu.');
             }
         } else {
+            echo '<script>alert("Ceci est un message d\'alerte en PHP!");</script>';
             redirectTo('index.php', 'Mot de passe incorrect.');
         }
     } else {
