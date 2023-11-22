@@ -36,7 +36,7 @@ if (isset($_POST['ajouter'])) {
     }
 
     // Rediriger vers la page admin.php
-    header('Location: liste_jeux.php');
+    header('Location:admin.php');
     exit();
 }
 
@@ -88,10 +88,27 @@ if (isset($_POST['modifier'])) {
 include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votre configuration
 
 $mysqli = new mysqli($host, $login, $passwd, $dbname);
-
 // Récupérer la liste des jeux depuis la base de données
 $selectQuery = "SELECT id_jeu, nom, description, catégorie, règle_du_jeu, photo FROM jeu";
 $resultat = $mysqli->query($selectQuery);
+
+
+// Vérifier si la requête a réussi
+if ($result) {
+    // Boucler à travers les résultats
+    while ($row = $result->fetch_assoc()) {
+        // Faire quelque chose avec les données de chaque ligne
+        echo $row['nom']; 
+        
+}
+
+// Libérer le résultat de la mémoire
+$result->free();
+} else {
+// Afficher une erreur si la requête a échoué
+echo "Erreur lors de l'exécution de la requête : " . $mysqli->error;
+}
+
 
 // Récupérer le message stocké dans la session
 $message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
@@ -125,20 +142,16 @@ $mysqli->close();
         <input type="submit" name="ajouter" value="Ajouter">
     </form>
 
-    
-
-
-    <!-- Liste des jeux existants -->
+    <!-- suppression des jeux existants -->
     <h2>Liste des jeux</h2>
-
     <ul>
-        <?php while ($row = $result->fetch_assoc()) : ?>
+        
             <li>
                 <!-- Affichez ici les détails du jeu -->
-                <a href="liste_jeux.php?modifier=<?php echo $row['id_jeu']; ?>">Modifier</a>
-                <a href="liste_jeux.php?supprimer=<?php echo $row['id_jeu']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">Supprimer</a>
+                <a href="liste_jeu.php?modifier=<?php echo $row['id_jeu']; ?>">Modifier</a>
+                <a href="liste_jeu.php?supprimer=<?php echo $row['id_jeu']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">Supprimer</a>
             </li>
-        <?php endwhile; ?>
+        
     </ul>
 
     <!-- Formulaire de modification de jeu -->
