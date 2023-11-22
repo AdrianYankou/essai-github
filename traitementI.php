@@ -14,6 +14,7 @@ $servername = "localhost";
 $username = "root"; // L'utilisateur par défaut de MySQL dans XAMPP
 $passwords = "root"; // Laissez le mot de passe vide par défaut
 
+
 // Nom de la base de données que vous avez créée dans phpMyAdmin
 $database = "projet";
 
