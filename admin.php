@@ -128,9 +128,9 @@ $resultat = $mysqli->query($query);
    <div>
      <ul>
         <li><a href="pcjeux.php">prendre en charge un jeu</a></li>
-        <li><a href="jeux_souhaites.php">Indiquer les Jeux Souhaités</a></li>
-        <li><a href="parties.php">voir les parties a venir</a></li>
-        <li><a href="historique_jeux.php">Consulter l'Historique des Jeux Joués</a></li>
+        <li><a href="jeux_souhaitees.php">liste de jeux des membres</a></li>/*proposition de créneau dedans, annulation des créneaux(tout en prévénant le joueur dans ce cas)*/
+        <li><a href="admincree.php">creer un compte admi</a></li>
+    
      </ul>
     </div>
     <!-- Ajoutez le pied de page et tout autre contenu supplémentaire ici -->
