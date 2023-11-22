@@ -12,9 +12,10 @@ session_start();
 // Inclure la connexion à la base de données et d'autres fichiers nécessaires
 include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votre configuration
 
+$mysqli = new mysqli($host, $login, $passwd, $dbname);
 // Récupérer la liste complète des jeux depuis la base de données
 $query = "SELECT * FROM jeu";
-$result = mysqli_query( $query);
+$resultat = $mysqli->query($query);
 ?>
 
 <!DOCTYPE html>

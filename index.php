@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    $message = null ;
+    if( isset( $_SESSION['message']))
+    {
+        $message =  $_SESSION['message'];
+        echo "" . $message ;
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,6 +96,7 @@
          <a href="inscription.html"><button>S'inscrire</button></a>
    
          <a href="admin.php"><button>admin</button></a>
+         <a href="sessionmembre.php"><button>membre</button></a>
       </div> 
       <div class="game-section">
          <h2>Jeux Populaires</h2>
