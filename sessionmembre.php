@@ -136,5 +136,3 @@ $result = mysqli_query( $query);
 
    
 <body>
-
-background other 2.0.png
