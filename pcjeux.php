@@ -15,7 +15,7 @@ function escapeString($value) {
     global $mysqli;
     return $mysqli->real_escape_string($value);
 }*/
-5
+
 // Ajouter un jeu
 if (isset($_POST['ajouter'])) {
     // Récupérer les données du formulaire
@@ -36,7 +36,7 @@ if (isset($_POST['ajouter'])) {
     }
 
     // Rediriger vers la page admin.php
-    header('Location: admin.php');
+    header('Location: liste_jeux.php');
     exit();
 }
 
@@ -85,9 +85,13 @@ if (isset($_POST['modifier'])) {
     exit();
 }
 
+include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votre configuration
+
+$mysqli = new mysqli($host, $login, $passwd, $dbname);
+
 // Récupérer la liste des jeux depuis la base de données
 $selectQuery = "SELECT id_jeu, nom, description, catégorie, règle_du_jeu, photo FROM jeu";
-$result = $mysqli->query($selectQuery);
+$resultat = $mysqli->query($selectQuery);
 
 // Récupérer le message stocké dans la session
 $message = isset($_SESSION['message']) ? $_SESSION['message'] : '';
@@ -121,8 +125,12 @@ $mysqli->close();
         <input type="submit" name="ajouter" value="Ajouter">
     </form>
 
+    
+
+
     <!-- Liste des jeux existants -->
     <h2>Liste des jeux</h2>
+
     <ul>
         <?php while ($row = $result->fetch_assoc()) : ?>
             <li>
