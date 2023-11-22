@@ -2,12 +2,12 @@
 session_start();
 
 // Vérifier si l'utilisateur est connecté en tant qu'administrateur
-if (!isset($_SESSION['id_utilisateur']) || $_SESSION['statut'] !== 'administrateur') {
+/*if (!isset($_SESSION['id_utilisateur']) || $_SESSION['statut'] !== 'administrateur') {
     header("Location: connexion.html");
     exit();
-}
+}*/
 
-include('connexion_bdd.php');
+include('param.inc.php');
 
 // Gestion des différentes actions (ajout, modification, suppression, etc.)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,9 +18,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $query_jeux = "SELECT * FROM jeu";
 $result_jeux = mysqli_query($connexion, $query_jeux);
 
+// Vérifier si la requête a réussi
+if (!$result_jeux) {
+    die("Erreur lors de la récupération des jeux : " . mysqli_error($connexion));
+}
+
 // Récupérer la liste des parties à venir
 $query_parties = "SELECT * FROM parties";
 $result_parties = mysqli_query($connexion, $query_parties);
+
+// Vérifier si la requête a réussi
+if (!$result_parties) {
+    die("Erreur lors de la récupération des parties : " . mysqli_error($connexion));
+}
 ?>
 
 <!DOCTYPE html>

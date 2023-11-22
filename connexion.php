@@ -63,7 +63,7 @@
         <body>
             <h1>Authentification</h1>
             <P>saisissez vos informations</P>
-            <form method="POST" action="ttconnexion.php">
+            <form action="ttconnexion.php"  method="POST" >
                 <label for="email">Identifiant:</label>
                 <input type="text" id="email" name = "email" required>
                 <br>

@@ -20,7 +20,7 @@ $database = "projet";
 
 
 // Créer une connexion
-$conn = new mysqli($servername, $username, $password, $database);
+$conn = new mysqli($servername, $username, $passwords, $database);
 
 
 
@@ -42,10 +42,10 @@ else
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,password,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
+        $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,motdepasse,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
-            header('Location: connexion.html');
+            header('Location: connexion.php');
             exit(); // Assure une sortie immédiate après la redirection
         } else {
             echo "Erreur lors de l'inscription : " . $conn->error . " Query: " . $insertUserQuery;
