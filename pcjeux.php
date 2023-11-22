@@ -143,7 +143,7 @@ $mysqli->close();
     </form>
 
     <!-- suppression des jeux existants -->
-    <h2>Liste des jeux</h2>
+    <h2>modifier Liste des jeux</h2>
     <ul>
         
             <li>
