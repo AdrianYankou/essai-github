@@ -80,7 +80,7 @@ session_start();
 }*/
 
 include('param.inc.php');
-
+$connexion = new mysqli($host, $login, $passwd, $dbname);
 $query = "SELECT * FROM jeu";
 $result = mysqli_query($connexion, $query);
 ?>
@@ -98,7 +98,7 @@ $result = mysqli_query($connexion, $query);
 
     <?php
     // Vérifier s'il y a des jeux dans la base de données
-    if (mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0 ) {
         echo "</p>les jeux existants sont les suivants.</p>";
         while ($row = mysqli_fetch_assoc($result)) {
                 echo "<h2>" . $row['nomjeu'] . "</h2>";
@@ -177,3 +177,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </body>
 </html>
+
+
