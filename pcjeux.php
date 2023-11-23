@@ -19,14 +19,15 @@ function escapeString($value) {
 // Ajouter un jeu
 if (isset($_POST['ajouter'])) {
     // Récupérer les données du formulaire
-    $nom = escapeString($_POST['nom']);
+    $nom = escapeString($_POST['nomjeu']);
     $description = escapeString($_POST['description']);
     $categorie = escapeString($_POST['categorie']);
     $regle_du_jeu = escapeString($_POST['regle_du_jeu']);
     $photo = escapeString($_POST['photo']);
 
+
     // Préparer la requête SQL d'insertion
-    $insertQuery = "INSERT INTO jeu (nom, description, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
+    $insertQuery = "INSERT INTO jeu (nomjeu, description, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
 
     // Exécuter la requête d'insertion
     if ($mysqli->query($insertQuery)) {
@@ -64,14 +65,14 @@ if (isset($_GET['supprimer'])) {
 if (isset($_POST['modifier'])) {
     // Récupérer les données du formulaire
     $id_jeu = escapeString($_POST['id_jeu']);
-    $nom = escapeString($_POST['nom']);
+    $nom = escapeString($_POST['nomjeu']);
     $description = escapeString($_POST['description']);
     $categorie = escapeString($_POST['categorie']);
     $regle_du_jeu = escapeString($_POST['regle_du_jeu']);
     $photo = escapeString($_POST['photo']);
 
     // Préparer la requête SQL de modification
-    $updateQuery = "UPDATE jeu SET nom = '$nom', description = '$description', catégorie = '$categorie', règle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
+    $updateQuery = "UPDATE jeu SET nomjeu = '$nom', description = '$description', catégorie = '$categorie', règle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
 
     // Exécuter la requête de modification
     if ($mysqli->query($updateQuery)) {
@@ -89,7 +90,7 @@ include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votr
 
 $mysqli = new mysqli($host, $login, $passwd, $dbname);
 // Récupérer la liste des jeux depuis la base de données
-$selectQuery = "SELECT id_jeu, nom, description, catégorie, règle_du_jeu, photo FROM jeu";
+$selectQuery = "SELECT id_jeu, nomjeu, description, catégorie, règle_du_jeu, photo FROM jeu";
 $resultat = $mysqli->query($selectQuery);
 
 
@@ -98,7 +99,7 @@ if ($result) {
     // Boucler à travers les résultats
     while ($row = $result->fetch_assoc()) {
         // Faire quelque chose avec les données de chaque ligne
-        echo $row['nom']; 
+        echo $row['nomjeu']; 
         
 }
 
@@ -156,12 +157,14 @@ $mysqli->close();
 
     <!-- Formulaire de modification de jeu -->
     <?php if (isset($_GET['modifier'])) : ?>
-        <h2>Modifier un jeu</h2>
-        <form method="post" action="liste_jeu.php">
+    <?php endif; ?>
+
+        
+    <h2>Modifier un jeu</h2>
+    <form method="post" action="liste_jeu.php">
             <!-- Ajoutez ici les champs du formulaire pour modifier un jeu -->
             <input type="submit" name="modifier" value="Modifier">
-        </form>
-    <?php endif; ?>
+    </form>
 
     <!-- Inclure vos scripts JavaScript ici si nécessaire -->
 

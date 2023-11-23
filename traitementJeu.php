@@ -9,10 +9,9 @@ $regle_du_jeu= $_POST['regle_du_jeu'];
 $photos=$_POST['photos'];
 
 
-
 $servername = "localhost";
-$username = "grp_6_2"; // L'utilisateur par défaut de MySQL dans XAMPP
-$passwords = "18Oxc2vCTssy"; // Laissez le mot de passe vide par défaut
+$username = "root"; // L'utilisateur par défaut de MySQL dans XAMPP
+$passwords = "root"; // Laissez le mot de passe vide par défaut
 
 
 // Nom de la base de données que vous avez créée dans phpMyAdmin
@@ -41,7 +40,7 @@ else
     } else {
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO jeu (nom,categorie,description,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
+        $insertUserQuery = "INSERT INTO jeu (nomjeu,categorie,description,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             header('Location: connexion.php');
