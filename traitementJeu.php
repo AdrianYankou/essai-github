@@ -39,7 +39,7 @@ else
     } else {
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO jeu (nom,categorie,description,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
+        $insertUserQuery = "INSERT INTO jeu (nomjeu,categorie,description,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             header('Location: connexion.php');
