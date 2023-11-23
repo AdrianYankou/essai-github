@@ -79,7 +79,7 @@ session_start();
     exit();
 }*/
 
-include('connexion_bdd.php');
+include('param.inc.php');
 
 $query = "SELECT * FROM jeu";
 $result = mysqli_query($connexion, $query);
@@ -101,12 +101,12 @@ $result = mysqli_query($connexion, $query);
     if (mysqli_num_rows($result) > 0) {
         echo "</p>les jeux existants sont les suivants.</p>";
         while ($row = mysqli_fetch_assoc($result)) {
-                echo "<h2>" . $row['nom'] . "</h2>";
+                echo "<h2>" . $row['nomjeu'] . "</h2>";
             echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
             echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
             echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download> lire la règle du jeu (PDF)</a></p>";
             if (!empty($row['photos'])) {
-                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "'>";
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nomjeu'] . "'>";
             }
             echo "<hr>";
             
@@ -152,8 +152,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 <form method="POST" action="traitementJeu.php">
 
-<label for="nom">Nom:</label>
-<input type="text" id="nom" name="nom" required>
+<label for="nomjeu">Nom:</label>
+<input type="text" id="nomjeu" name="nomjeu" required>
 <br>
 
 <label for="categorie">Categorie:</label>
