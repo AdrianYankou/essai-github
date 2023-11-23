@@ -5,7 +5,7 @@
 include('param.inc.php');
 
 // Logique de suppression si la confirmation est envoyée
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirmer_suppression'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
     $connexion = new mysqli($host, $login, $passwd, $dbname);
     $id_jeu = mysqli_real_escape_string($connexion, $_POST['id_jeu']);
     
