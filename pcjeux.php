@@ -157,12 +157,14 @@ $mysqli->close();
 
     <!-- Formulaire de modification de jeu -->
     <?php if (isset($_GET['modifier'])) : ?>
-        <h2>Modifier un jeu</h2>
-        <form method="post" action="liste_jeu.php">
+    <?php endif; ?>
+
+        
+    <h2>Modifier un jeu</h2>
+    <form method="post" action="liste_jeu.php">
             <!-- Ajoutez ici les champs du formulaire pour modifier un jeu -->
             <input type="submit" name="modifier" value="Modifier">
-        </form>
-    <?php endif; ?>
+    </form>
 
     <!-- Inclure vos scripts JavaScript ici si nécessaire -->
 

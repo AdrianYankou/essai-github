@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <form method="POST" action="traitementJeu.php">
 
 <label for="nomjeu">Nom:</label>
-<input type="text" id="nomjeu" name="nomjeus" required>
+<input type="text" id="nomjeu" name="nomjeu" required>
 <br>
 
 <label for="categorie">Categorie:</label>
