@@ -19,15 +19,15 @@ function escapeString($value) {
 // Ajouter un jeu
 if (isset($_POST['ajouter'])) {
     // Récupérer les données du formulaire
-    $nom = escapeString($_POST['nomjeu']);
-    $description = escapeString($_POST['description']);
+    $nom = escapeString($_POST['nom']);
+    $description = escapeString($_POST['descriptions']);
     $categorie = escapeString($_POST['categorie']);
     $regle_du_jeu = escapeString($_POST['regle_du_jeu']);
     $photo = escapeString($_POST['photo']);
 
 
     // Préparer la requête SQL d'insertion
-    $insertQuery = "INSERT INTO jeu (nomjeu, description, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
+    $insertQuery = "INSERT INTO jeu (nom, descriptions, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
 
     // Exécuter la requête d'insertion
     if ($mysqli->query($insertQuery)) {
@@ -65,14 +65,14 @@ if (isset($_GET['supprimer'])) {
 if (isset($_POST['modifier'])) {
     // Récupérer les données du formulaire
     $id_jeu = escapeString($_POST['id_jeu']);
-    $nom = escapeString($_POST['nomjeu']);
-    $description = escapeString($_POST['description']);
+    $nom = escapeString($_POST['nom']);
+    $description = escapeString($_POST['descriptions']);
     $categorie = escapeString($_POST['categorie']);
     $regle_du_jeu = escapeString($_POST['regle_du_jeu']);
     $photo = escapeString($_POST['photo']);
 
     // Préparer la requête SQL de modification
-    $updateQuery = "UPDATE jeu SET nomjeu = '$nom', description = '$description', catégorie = '$categorie', règle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
+    $updateQuery = "UPDATE jeu SET nom = '$nom', descriptions = '$description', catégorie = '$categorie', règle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
 
     // Exécuter la requête de modification
     if ($mysqli->query($updateQuery)) {
@@ -90,7 +90,7 @@ include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votr
 
 $mysqli = new mysqli($host, $login, $passwd, $dbname);
 // Récupérer la liste des jeux depuis la base de données
-$selectQuery = "SELECT id_jeu, nomjeu, description, catégorie, règle_du_jeu, photo FROM jeu";
+$selectQuery = "SELECT id_jeu, nom, descriptions, catégorie, règle_du_jeu, photo FROM jeu";
 $resultat = $mysqli->query($selectQuery);
 
 
@@ -99,7 +99,7 @@ if ($result) {
     // Boucler à travers les résultats
     while ($row = $result->fetch_assoc()) {
         // Faire quelque chose avec les données de chaque ligne
-        echo $row['nomjeu']; 
+        echo $row['nom']; 
         
 }
 
@@ -144,14 +144,15 @@ $mysqli->close();
     </form>
 
     <!-- suppression des jeux existants -->
-    <h2>modifier Liste des jeux</h2>
+    <h2>supprimer un jeu</h2>
     <ul>
         
-            <li>
-                <!-- Affichez ici les détails du jeu -->
-                <a href="liste_jeu.php?modifier=<?php echo $row['id_jeu']; ?>">Modifier</a>
-                <a href="liste_jeu.php?supprimer=<?php echo $row['id_jeu']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">Supprimer</a>
-            </li>
+           
+        <form method="get" action="liste_jeu.php">
+            <input type="hidden" name="supprimer" value="<?php echo $row['id_jeu']; ?>">
+            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">Supprimer</button>
+        </form>
+    
         
     </ul>
 
@@ -160,7 +161,7 @@ $mysqli->close();
     <?php endif; ?>
 
         
-    <h2>Modifier un jeu</h2>
+    <h3>Modifier un jeu</h3>
     <form method="post" action="liste_jeu.php">
             <!-- Ajoutez ici les champs du formulaire pour modifier un jeu -->
             <input type="submit" name="modifier" value="Modifier">

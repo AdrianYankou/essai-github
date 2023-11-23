@@ -80,7 +80,7 @@ session_start();
 }*/
 
 include('param.inc.php');
-
+$connexion = new mysqli($host, $login, $passwd, $dbname);
 $query = "SELECT * FROM jeu";
 $result = mysqli_query($connexion, $query);
 ?>
@@ -113,8 +113,5 @@ $result = mysqli_query($connexion, $query);
         }
     } else {
     echo "<p>Aucun jeu disponible pour le moment.</p>";
-}
-
-
-
-
+    }
+    ?>
