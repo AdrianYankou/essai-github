@@ -99,9 +99,8 @@ $result = mysqli_query($connexion, $query);
     <?php
     // Vérifier s'il y a des jeux dans la base de données
     if (mysqli_num_rows($result) > 0) {
-    
+        echo "</p>les jeux existants sont les suivants.</p>";
         while ($row = mysqli_fetch_assoc($result)) {
-                echo "</p>les jeux existants sont les suivants.</p>";
                 echo "<h2>" . $row['nom'] . "</h2>";
             echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
             echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
