@@ -101,12 +101,12 @@ $result = mysqli_query($connexion, $query);
     if (mysqli_num_rows($result) > 0) {
         echo "</p>les jeux existants sont les suivants.</p>";
         while ($row = mysqli_fetch_assoc($result)) {
-                echo "<h2>" . $row['nomjeu'] . "</h2>";
+                echo "<h2>" . $row['nom'] . "</h2>";
             echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
-            echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
+            echo "<p><strong>Description:</strong> " . $row['descriptions'] . "</p>";
             echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download> lire la règle du jeu (PDF)</a></p>";
             if (!empty($row['photos'])) {
-                echo "<img src='" . $row['photos'] . "' alt='" . $row['nomjeu'] . "'>";
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "'>";
             }
             echo "<hr>";
             
@@ -115,3 +115,27 @@ $result = mysqli_query($connexion, $query);
     echo "<p>Aucun jeu disponible pour le moment.</p>";
     }
     ?>
+
+<div class="col-md-6">
+                    <p class="texte-capitalize py-3 redressed banner-desc"> Bienvenue membre! </p>
+                </div>
+                <div class="col-md-6">
+                    <h1 class="texte-capitalize py-3 redressed banner-desc">
+                        Indiquer les jeux auxquels vous souhaitez jouer
+                    </h1>    
+                    <form action="liste_jeu.php" method="post">
+                        <label for="jeu">Sélectionnez un jeu :</label>
+                        <select name="jeu" id="jeu">
+                            <option value="Jeu 1">jeu de Carte</option>
+                            <option value="Jeu 2">jeu UNO</option>
+                            <option value="Jeu 3">jeu de Scrable</option>
+                            <option value="Jeu 4">jeu de Monopoly</option>
+                            <option value="Jeu 5">jeu de Société</option>
+                           
+                        </select>
+                        <button type="submit">Soumettre</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
