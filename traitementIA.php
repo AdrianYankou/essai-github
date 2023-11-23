@@ -46,7 +46,7 @@ else
         $insertUserQuery = "INSERT INTO utilisateur (nom,prenom,email,password,statut) values ('$nom','$prenom','$email','$hashedPassword','$statut')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
-            header('Location: connexion.php');
+            header('Location: admin.php');
             exit(); // Assure une sortie immédiate après la redirection
         } else {
             echo "Erreur lors de l'inscription : " . $conn->error . " Query: " . $insertUserQuery;

@@ -48,12 +48,12 @@
 
     <h1>Inscription admin</h1>
     
-    <!-- Lien de retour vers la première page -->
-    <a href="index.html">Retour à la Page d'Accueil</a>
+    <!-- Lien de retour vers la page précedente  -->
+    <a href="admin.php">Retour à la Page précédente</a>
     
-    <form method="POST" action="traitementI.php">
+    <form method="POST" action="traitementIA.php">
 
-        <label for="nom">Nom:</label>
+        <label for="nom">Nom:</label>.
         <input type="text" id="nom" name="nom" required>
         <br>
     
