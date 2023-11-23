@@ -8,7 +8,7 @@ $description = $_POST['description'];
 $regle_du_jeu= $_POST['regle_du_jeu'];
 $photos=$_POST['photos'];
 
-$servername = "localhost";
+$servername = " localhost:3306";
 $username = "grp_6_2"; // L'utilisateur par défaut de MySQL dans XAMPP
 $passwords = "18Oxc2vCTssy"; // Laissez le mot de passe vide par défaut
 
