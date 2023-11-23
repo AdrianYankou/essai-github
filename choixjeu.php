@@ -34,10 +34,7 @@
             color: white;
         }
 
-        form {
-            display: inline-block;
-            text-align: left;
-        }
+       
 
         ul {
             list-style-type: none;
