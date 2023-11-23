@@ -101,12 +101,12 @@ $result = mysqli_query($connexion, $query);
     if (mysqli_num_rows($result) > 0 ) {
         echo "</p>les jeux existants sont les suivants.</p>";
         while ($row = mysqli_fetch_assoc($result)) {
-                echo "<h2>" . $row['nomjeu'] . "</h2>";
+                echo "<h2>" . $row['nom'] . "</h2>";
             echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
-            echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
+            echo "<p><strong>Description:</strong> " . $row['descriptions'] . "</p>";
             echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download> lire la règle du jeu (PDF)</a></p>";
             if (!empty($row['photos'])) {
-                echo "<img src='" . $row['photos'] . "' alt='" . $row['nomjeu'] . "'>";
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "'>";
             }
             echo "<hr>";
             
@@ -152,8 +152,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     ?>
 <form method="POST" action="traitementJeu.php">
 
-<label for="nomjeu">Nom:</label>
-<input type="text" id="nomjeu" name="nomjeu" required>
+<label for="nom">Nom:</label>
+<input type="text" id="nom" name="nom" required>
 <br>
 
 <label for="categorie">Categorie:</label>
@@ -161,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <br>
 
 <label for="email">Description:</label>
-<input type="text" id="description" name="description" required>
+<input type="text" id="descriptions" name="descriptions" required>
 <br>
 
 
