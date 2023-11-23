@@ -8,14 +8,13 @@ $description = $_POST['description'];
 $regle_du_jeu= $_POST['regle_du_jeu'];
 $photos=$_POST['photos'];
 
-
 $servername = "localhost";
-$username = "root"; // L'utilisateur par défaut de MySQL dans XAMPP
-$passwords = "root"; // Laissez le mot de passe vide par défaut
+$username = "grp_6_2"; // L'utilisateur par défaut de MySQL dans XAMPP
+$passwords = "18Oxc2vCTssy"; // Laissez le mot de passe vide par défaut
 
 
 // Nom de la base de données que vous avez créée dans phpMyAdmin
-$database = "projet";
+$database = "bdd_6_2";
 
 
 
