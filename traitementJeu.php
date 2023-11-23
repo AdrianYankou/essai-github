@@ -4,7 +4,7 @@
 
 $nom = $_POST['nom'];
 $categorie = $_POST['categorie'];
-$description = $_POST['description'];
+$description = $_POST['descriptions'];
 $regle_du_jeu= $_POST['regle_du_jeu'];
 $photos=$_POST['photos'];
 
@@ -41,7 +41,7 @@ else
     } else {
 
         // Insérer l'utilisateur avec le mot de passe haché
-        $insertUserQuery = "INSERT INTO jeu (nomjeu,categorie,description,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
+        $insertUserQuery = "INSERT INTO jeu (nom,categorie,descriptions,regle_du_jeu,photos) values ('$nom','$categorie','$description','$regle_du_jeu','$photos')";
 
         if ($conn->query($insertUserQuery) === TRUE) {
             header('Location: connexion.php');
