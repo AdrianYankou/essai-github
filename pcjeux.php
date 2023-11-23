@@ -25,6 +25,7 @@ if (isset($_POST['ajouter'])) {
     $regle_du_jeu = escapeString($_POST['regle_du_jeu']);
     $photo = escapeString($_POST['photo']);
 
+    
     // Préparer la requête SQL d'insertion
     $insertQuery = "INSERT INTO jeu (nom, description, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
 
