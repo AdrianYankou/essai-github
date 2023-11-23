@@ -20,8 +20,7 @@
         h1 {
             color: white;
             text-align: center;
-            margin-left: 70%;
-            margin-top: 250px;
+        
 
         }
 
@@ -98,22 +97,45 @@ $result = mysqli_query($connexion, $query);
 
     <?php
     // Vérifier s'il y a des jeux dans la base de données
-    if (mysqli_num_rows($result) > 0 ) {
-        echo "</p>les jeux existants sont les suivants.</p>";
+    if (mysqli_num_rows($result) > 0) {
+
+        echo "<div style='margin-left: 10%; margin-right: 10%;'>";
+
+        echo "<h1 style='color: white;'>Les jeux existants sont les suivants :</h1>";
+
+   
+
         while ($row = mysqli_fetch_assoc($result)) {
-                echo "<h2>" . $row['nom'] . "</h2>";
+
+            echo "<div style='border: 1px solid #ddd;background-color: indigo; border-radius: 5px; padding: 15px; margin-bottom: 20px;'>";
+
+            echo "<h2 style='color: white;'>" . $row['nom'] . "</h2>";
+
             echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
+
             echo "<p><strong>Description:</strong> " . $row['descriptions'] . "</p>";
-            echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download> lire la règle du jeu (PDF)</a></p>";
+
             if (!empty($row['photos'])) {
-                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "'>";
+
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nom'] . "' style='max-width: 250px; height: auto;'>";
+
             }
-            echo "<hr>";
-            
+
+            echo "<p style='margin-top: 10px;'><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download style='color: #3498db;'>Lire la règle du jeu (PDF)</a></p>";
+
+            echo "</div>";
+
         }
+
+   
+
+        echo "</div>";
+
     } else {
-    echo "<p>Aucun jeu disponible pour le moment.</p>";
-}
+
+        echo "<p style='color: white;'>Aucun jeu trouvé.</p>";
+
+    }
 
 
 //Telechargement des fichiers

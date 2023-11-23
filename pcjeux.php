@@ -27,7 +27,7 @@ if (isset($_POST['ajouter'])) {
 
 
     // Préparer la requête SQL d'insertion
-    $insertQuery = "INSERT INTO jeu (nom, descriptions, catégorie, règle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
+    $insertQuery = "INSERT INTO jeu (nom, descriptions, categorie, regle_du_jeu, photo) VALUES ('$nom', '$description', '$categorie', '$regle_du_jeu', '$photo')";
 
     // Exécuter la requête d'insertion
     if ($mysqli->query($insertQuery)) {
@@ -72,7 +72,7 @@ if (isset($_POST['modifier'])) {
     $photo = escapeString($_POST['photo']);
 
     // Préparer la requête SQL de modification
-    $updateQuery = "UPDATE jeu SET nom = '$nom', descriptions = '$description', catégorie = '$categorie', règle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
+    $updateQuery = "UPDATE jeu SET nom = '$nom', descriptions = '$description', categorie = '$categorie', regle_du_jeu = '$regle_du_jeu', photo = '$photo' WHERE id_jeu = '$id_jeu'";
 
     // Exécuter la requête de modification
     if ($mysqli->query($updateQuery)) {
@@ -90,12 +90,12 @@ include('param.inc.php'); // Assurez-vous d'adapter le nom du fichier selon votr
 
 $mysqli = new mysqli($host, $login, $passwd, $dbname);
 // Récupérer la liste des jeux depuis la base de données
-$selectQuery = "SELECT id_jeu, nom, descriptions, catégorie, règle_du_jeu, photo FROM jeu";
+$selectQuery = "SELECT id_jeu, nom, descriptions, categorie, regle_du_jeu, photo FROM jeu";
 $resultat = $mysqli->query($selectQuery);
 
 
 // Vérifier si la requête a réussi
-if ($result) {
+if ($resultat) {
     // Boucler à travers les résultats
     while ($row = $result->fetch_assoc()) {
         // Faire quelque chose avec les données de chaque ligne
@@ -148,7 +148,7 @@ $mysqli->close();
     <ul>
         
            
-        <form method="get" action="liste_jeu.php">
+        <form method="get" action="suprimejeu.php">
             <input type="hidden" name="supprimer" value="<?php echo $row['id_jeu']; ?>">
             <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce jeu ?')">Supprimer</button>
         </form>

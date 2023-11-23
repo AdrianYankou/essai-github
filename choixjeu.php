@@ -116,26 +116,4 @@ $result = mysqli_query($connexion, $query);
     }
     ?>
 
-<div class="col-md-6">
-                    <p class="texte-capitalize py-3 redressed banner-desc"> Bienvenue membre! </p>
-                </div>
-                <div class="col-md-6">
-                    <h1 class="texte-capitalize py-3 redressed banner-desc">
-                        Indiquer les jeux auxquels vous souhaitez jouer
-                    </h1>    
-                    <form action="liste_jeu.php" method="post">
-                        <label for="jeu">Sélectionnez un jeu :</label>
-                        <select name="jeu" id="jeu">
-                            <option value="Jeu 1">jeu de Carte</option>
-                            <option value="Jeu 2">jeu UNO</option>
-                            <option value="Jeu 3">jeu de Scrable</option>
-                            <option value="Jeu 4">jeu de Monopoly</option>
-                            <option value="Jeu 5">jeu de Société</option>
-                           
-                        </select>
-                        <button type="submit">Soumettre</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<
