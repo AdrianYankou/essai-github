@@ -79,7 +79,7 @@ session_start();
     exit();
 }*/
 
-include('connexion_bdd.php');
+include('param.inc.php');
 
 $query = "SELECT * FROM jeu";
 $result = mysqli_query($connexion, $query);

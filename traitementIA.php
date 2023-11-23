@@ -10,7 +10,7 @@ $password = $_POST['password'];
 //pour la vérification du statut
 $statut = "admin";
 
-$servername = " localhost:3306";
+$servername = " localhost";
 $username = "grp_6_2"; // L'utilisateur par défaut de MySQL dans XAMPP
 $passwords = "18Oxc2vCTssy"; // Laissez le mot de passe vide par défaut
 

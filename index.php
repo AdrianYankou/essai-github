@@ -23,7 +23,7 @@
          font-family: Arial, sans-serif;
          margin: 0;
          padding: 0;
-         background-image: url('background Accueil.png');
+         background-image: url('background accueil.png');
          background-size: cover;
          background-position: center;
          background-repeat: no-repeat;
