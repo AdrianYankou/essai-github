@@ -96,36 +96,24 @@ $result = mysqli_query($connexion, $query);
 <body>
     <h1>Liste des Jeux</h1>
 
-    
-    ?>
-<form method="POST" action="traitementJeu.php">
-
-<label for="nomjeu">Nom:</label>
-<input type="text" id="nomjeu" name="nomjeu" required>
-<br>
-
-<label for="categorie">Categorie:</label>
-<input type="text" id="categorie" name="categorie" required>
-<br>
-
-<label for="email">Description:</label>
-<input type="text" id="description" name="description" required>
-<br>
-
-
-        <label for="regle_du_jeu">Fichier PDF :</label>
-        <input type="file" name="regle_du_jeu" accept=".pdf" required>
-        <br>
-
-        <label for="photos">Fichier Image :</label>
-        <input type="file" name="photos" accept="image/*" required>
-        <br>
-
-        <input type="submit" value="valider">
-    </form>
-</body>
-</html>
-
+    <?php
+    // Vérifier s'il y a des jeux dans la base de données
+    if (mysqli_num_rows($result) > 0) {
+        echo "</p>les jeux existants sont les suivants.</p>";
+        while ($row = mysqli_fetch_assoc($result)) {
+                echo "<h2>" . $row['nomjeu'] . "</h2>";
+            echo "<p><strong>Catégorie:</strong> " . $row['categorie'] . "</p>";
+            echo "<p><strong>Description:</strong> " . $row['description'] . "</p>";
+            echo "<p><strong>Règle du jeu:</strong> <a href='" . $row['regle_du_jeu'] . "' target='_blank' download> lire la règle du jeu (PDF)</a></p>";
+            if (!empty($row['photos'])) {
+                echo "<img src='" . $row['photos'] . "' alt='" . $row['nomjeu'] . "'>";
+            }
+            echo "<hr>";
+            
+        }
+    } else {
+    echo "<p>Aucun jeu disponible pour le moment.</p>";
+}
 
 
 
