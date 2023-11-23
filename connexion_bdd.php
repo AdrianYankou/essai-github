@@ -2,9 +2,9 @@
 
 // Informations de connexion à la base de données
 $serveur = "localhost"; // Adresse du serveur MySQL
-$utilisateur = "root"; // Nom d'utilisateur MySQL
-$mot_de_passe = "root"; // Mot de passe MySQL
-$nom_base_de_donnees = "projet"; // Nom de la base de données
+$utilisateur = "grp_6_2"; // Nom d'utilisateur MySQL
+$mot_de_passe = "18Oxc2vCTssy"; // Mot de passe MySQL
+$nom_base_de_donnees = "bdd_6_2"; // Nom de la base de données
 
 // Connexion à la base de données
 $connexion = mysqli_connect($serveur, $utilisateur, $mot_de_passe, $nom_base_de_donnees);

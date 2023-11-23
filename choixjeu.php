@@ -69,9 +69,6 @@
 </head>
 </html>
 
-
-
-
 <?php
 session_start();
 /*if (!isset($_SESSION['id_utilisateur'])) {
@@ -116,64 +113,5 @@ $result = mysqli_query($connexion, $query);
 }
 
 
-//Telechargement des fichiers
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Vérifier si des fichiers ont été téléchargés
-    if (isset($_FILES['pdf_file']) && isset($_FILES['image_file'])) {
-        // Chemin où les fichiers seront enregistrés
-        $uploadDirectory = 'uploads/';
-
-        // Nom du fichier PDF
-        $regle_du_jeu = basename($_FILES['pdf_file']['name']);
-        $pdfTargetPath = $uploadDirectory . $regle_du_jeu;
-
-        // Nom du fichier image
-        $photos = basename($_FILES['image_file']['name']);
-        $imageTargetPath = $uploadDirectory . $photos;
-
-        // Télécharger le fichier PDF
-        if (move_uploaded_file($_FILES['pdf_file']['tmp_name'], $pdfTargetPath)) {
-            echo "Le fichier PDF $regle_du_jeu a été téléchargé avec succès.<br>";
-        } else {
-            echo "Erreur lors du téléchargement du fichier PDF.<br>";
-        }
-
-        // Télécharger le fichier image
-        if (move_uploaded_file($_FILES['image_file']['tmp_name'], $imageTargetPath)) {
-            echo "Le fichier image $photos a été téléchargé avec succès.<br>";
-        } else {
-            echo "Erreur lors du téléchargement du fichier image.<br>";
-        }
-    } else {
-        echo "Veuillez sélectionner à la fois un fichier PDF et une image.<br>";
-    }
-}
-    ?>
-<form method="POST" action="traitementJeu.php">
-
-<label for="nom">Nom:</label>
-<input type="text" id="nom" name="nom" required>
-<br>
-
-<label for="categorie">Categorie:</label>
-<input type="text" id="categorie" name="categorie" required>
-<br>
-
-<label for="email">Description:</label>
-<input type="text" id="description" name="description" required>
-<br>
 
 
-        <label for="regle_du_jeu">Fichier PDF :</label>
-        <input type="file" name="regle_du_jeu" accept=".pdf" required>
-        <br>
-
-        <label for="photos">Fichier Image :</label>
-        <input type="file" name="photos" accept="image/*" required>
-        <br>
-
-        <input type="submit" value="valider">
-    </form>
-</body>
-</html>
